@@ -13,7 +13,8 @@ const { class: className = "" } = Astro.props;
         <span class="phone-3d__home"></span>
       </div>
       <div class="phone-3d__side">
-        <span class="phone-3d__power"></span>
+        <span class="phone-3d__btn phone-3d__btn--action"></span>
+        <span class="phone-3d__btn phone-3d__btn--power"></span>
       </div>
     </div>
   </div>
@@ -82,21 +83,30 @@ const { class: className = "" } = Astro.props;
     height: 100%;
     border: 2px solid #0a0a0a;
     border-left: none;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 16px 16px 0;
     background: #ffffff;
     transform-origin: 0% 50%;
     transform: rotateY(90deg);
     backface-visibility: hidden;
   }
 
-  .phone-3d__power {
+  .phone-3d__btn {
     position: absolute;
-    top: 22%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 50px;
-    border-top: 1.5px solid #0a0a0a;
-    border-bottom: 1.5px solid #0a0a0a;
+    width: 72%;
+    background: #ffffff;
+    border: 1.5px solid #0a0a0a;
+    border-radius: 2px;
+  }
+
+  .phone-3d__btn--action {
+    top: 19%;
+    height: 16px;
+  }
+
+  .phone-3d__btn--power {
+    top: 27%;
+    height: 42px;
   }
 </style>
