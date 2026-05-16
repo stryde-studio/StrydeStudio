@@ -1,5 +1,9 @@
 ---
 import QuietArt from "./QuietArt.astro";
+import { resolveLocale, t, type Locale } from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang].statement;
 ---
 
 <section class="bg-ink-900 text-white">
@@ -7,17 +11,17 @@ import QuietArt from "./QuietArt.astro";
     <div class="grid items-start gap-12 md:grid-cols-[auto_1fr_auto] md:gap-16">
       <span
         class="text-[11px] font-medium tracking-widest2 uppercase text-white/60"
-        >( STATEMENT )</span
+        >{dict.meta}</span
       >
 
       <p
         class="text-2xl font-bold leading-[1.5] tracking-tight text-white sm:text-3xl md:text-4xl"
       >
-        Quietly,<br />
-        with care.<br />
+        {dict.lead1}<br />
+        {dict.lead2}<br />
         <span class="text-white/60">
-          画面の外側にある時間を、<br />
-          もう一度デザインする。
+          {dict.sub1}<br />
+          {dict.sub2}
         </span>
       </p>
 
@@ -29,7 +33,9 @@ import QuietArt from "./QuietArt.astro";
     </div>
   </div>
 
-  <div class="relative h-[30vh] min-h-[200px] w-full overflow-hidden border-t border-white/10">
+  <div
+    class="relative h-[30vh] min-h-[200px] w-full overflow-hidden border-t border-white/10"
+  >
     <QuietArt variant="wave" class="absolute inset-0 h-full w-full" />
   </div>
 </section>

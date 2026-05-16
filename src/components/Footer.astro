@@ -1,32 +1,39 @@
 ---
+import { resolveLocale, t, localePath, type Locale } from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang];
 const year = new Date().getFullYear();
 
+const home = localePath(lang, "/");
 const nav = [
-  { label: "PRODUCTS", href: "/#products" },
-  { label: "PHILOSOPHY", href: "/#philosophy" },
-  { label: "STUDIO", href: "/#studio" },
+  { label: dict.nav.products, href: `${home === "/" ? "" : home}#products` },
+  { label: dict.nav.philosophy, href: `${home === "/" ? "" : home}#philosophy` },
+  { label: dict.nav.studio, href: `${home === "/" ? "" : home}#studio` },
 ];
 
-const legalNav = [
-  { label: "プライバシーポリシー", href: "/privacy" },
-  { label: "利用規約", href: "/terms" },
-  { label: "特定商取引法に基づく表記", href: "/legal/tokushou" },
-];
+const legalNav = dict.footer.legal.map((item) => ({
+  label: item.label,
+  // 特商法は日本語のみなので /legal/tokushou をそのまま使う
+  href:
+    item.href === "/legal/tokushou" ? item.href : localePath(lang, item.href),
+}));
 ---
 
 <footer id="contact" class="bg-ink-900 text-white">
   <div class="container-page py-20 md:py-28">
     <div class="grid gap-12 md:grid-cols-2">
       <div>
-        <p class="text-[11px] font-medium tracking-widest2 uppercase text-white/60">
-          ( CONTACT )
+        <p
+          class="text-[11px] font-medium tracking-widest2 uppercase text-white/60"
+        >
+          {dict.footer.meta}
         </p>
         <h2 class="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
-          Let&rsquo;s get<br />in touch.
+          {dict.footer.heading1}<br />{dict.footer.heading2}
         </h2>
         <p class="mt-6 text-sm leading-loose text-white/70">
-          ご依頼・取材・その他のお問い合わせは<br />
-          以下よりお気軽にご連絡ください。
+          {dict.footer.body}
         </p>
         <a
           href="mailto:contact@stryde.studio"
@@ -72,9 +79,11 @@ const legalNav = [
       </div>
     </div>
 
-    <div class="mt-20 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-8 text-[11px] tracking-widest2 uppercase text-white/50 md:flex-row md:items-center">
+    <div
+      class="mt-20 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-8 text-[11px] tracking-widest2 uppercase text-white/50 md:flex-row md:items-center"
+    >
       <span>Stryde Studio</span>
-      <span>© {year} Stryde Studio. All rights reserved.</span>
+      <span>© {year} Stryde Studio. {dict.footer.rights}</span>
     </div>
   </div>
 </footer>

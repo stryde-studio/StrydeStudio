@@ -1,15 +1,22 @@
 ---
+import { resolveLocale, t, localePath, type Locale } from "../i18n/locales";
+import LangSwitch from "./LangSwitch.astro";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang];
+
+const home = localePath(lang, "/");
 const nav = [
-  { label: "PRODUCTS", href: "#products" },
-  { label: "PHILOSOPHY", href: "#philosophy" },
-  { label: "STUDIO", href: "#studio" },
+  { label: dict.nav.products, href: `${home === "/" ? "" : home}#products` },
+  { label: dict.nav.philosophy, href: `${home === "/" ? "" : home}#philosophy` },
+  { label: dict.nav.studio, href: `${home === "/" ? "" : home}#studio` },
 ];
 ---
 
 <header class="absolute inset-x-0 top-0 z-30">
   <div class="container-page flex items-center justify-between py-6">
     <a
-      href="/"
+      href={home}
       class="flex flex-col gap-0.5 text-base font-semibold uppercase leading-none text-ink-900"
       aria-label="Stryde Studio"
     >
@@ -29,6 +36,11 @@ const nav = [
       {nav.map((item) => <a href={item.href} class="nav-link">{item.label}</a>)}
     </nav>
 
-    <a href="#contact" class="btn-contact">CONTACT</a>
+    <div class="flex items-center gap-6">
+      <LangSwitch />
+      <a href={`${home === "/" ? "" : home}#contact`} class="btn-contact"
+        >{dict.nav.contact}</a
+      >
+    </div>
   </div>
 </header>

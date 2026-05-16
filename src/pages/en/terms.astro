@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import LegalPage from "../../components/LegalPage.astro";
+import { termsPage } from "../../i18n/legal";
+
+const dict = termsPage.en;
+---
+
+<Layout
+  title="Terms of Service — Stryde Studio"
+  description="Terms of Service of Stryde Studio."
+>
+  <Header />
+  <LegalPage
+    metaLabel={dict.metaLabel}
+    title1={dict.title1}
+    title2={dict.title2}
+    sections={dict.sections}
+    established={dict.established}
+    back={dict.back}
+  />
+  <Footer />
+</Layout>

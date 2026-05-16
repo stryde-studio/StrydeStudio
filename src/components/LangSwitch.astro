@@ -1,0 +1,33 @@
+---
+import {
+  resolveLocale,
+  t,
+  localePath,
+  type Locale,
+} from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang].langSwitch;
+
+// path within the site, without the locale prefix
+const pathname = Astro.url.pathname;
+const stripped = pathname.replace(/^\/en\/?/, "/");
+const otherLang: Locale = lang === "ja" ? "en" : "ja";
+const otherHref = localePath(otherLang, stripped);
+---
+
+<div
+  class="flex items-center gap-1 text-[11px] font-medium tracking-widest2 uppercase"
+>
+  <span
+    class="px-1 text-ink-900"
+    aria-current="true"
+    aria-label={dict.ariaCurrent}>{dict.currentLabel}</span
+  >
+  <span class="text-ink-300">/</span>
+  <a
+    href={otherHref}
+    class="px-1 text-ink-500 transition hover:text-ink-900"
+    aria-label={dict.ariaSwitch}>{dict.otherLabel}</a
+  >
+</div>

@@ -1,0 +1,68 @@
+---
+import { resolveLocale, localePath, type Locale } from "../i18n/locales";
+
+interface Section {
+  heading: string;
+  body: string[];
+}
+
+interface Props {
+  metaLabel: string;
+  title1: string;
+  title2?: string;
+  sections: Section[];
+  established: string;
+  back: string;
+}
+
+const { metaLabel, title1, title2, sections, established, back } = Astro.props;
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const home = localePath(lang, "/");
+---
+
+<main class="pt-32 md:pt-40">
+  <section class="bg-white pb-24 md:pb-32">
+    <div class="container-page max-w-3xl">
+      <span class="meta-label">{metaLabel}</span>
+      <h1
+        class="mt-6 text-3xl font-bold leading-[1.2] tracking-tight text-ink-900 sm:text-4xl md:text-5xl"
+      >
+        {title1}{title2 && <><br />{title2}</>}
+      </h1>
+
+      <div class="mt-16 space-y-12 md:mt-20">
+        {
+          sections.map((s) => (
+            <section>
+              <h2 class="text-lg font-bold tracking-tight text-ink-900 md:text-xl">
+                {s.heading}
+              </h2>
+              <div class="mt-4 space-y-3 text-sm leading-loose text-ink-700 md:text-base">
+                {s.body.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+
+      <p class="mt-16 text-xs leading-loose text-ink-500">{established}</p>
+
+      <a
+        href={home}
+        class="mt-12 inline-flex items-center gap-3 text-xs font-medium tracking-widest2 uppercase text-ink-900"
+      >
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+          <path
+            d="M14 6L8 12L14 18"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="square"
+          ></path>
+        </svg>
+        {back}
+      </a>
+    </div>
+  </section>
+</main>

@@ -1,11 +1,14 @@
 ---
-type StoreLink = string | null; // string = URL, null = 準備中, undefined (omit) = 非表示
+import { resolveLocale, t, type Locale } from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang].products;
+
+type StoreLink = string | null; // string = URL, null = preparing, undefined = hide
 
 interface Product {
   num: string;
-  name: string;
-  category: string;
-  description: string;
+  key: keyof typeof dict.items;
   glyph: string;
   iconImage?: string;
   appStore?: StoreLink;
@@ -15,9 +18,7 @@ interface Product {
 const products: Product[] = [
   {
     num: "01",
-    name: "NekoLock",
-    category: "FOCUS",
-    description: "かわいい猫が見守ってくれる集中サポートアプリ。",
+    key: "NekoLock",
     glyph: "猫",
     iconImage: "/NekoLock.webp",
     appStore:
@@ -26,9 +27,7 @@ const products: Product[] = [
   },
   {
     num: "02",
-    name: "TodoLock",
-    category: "TASKS",
-    description: "やるべきことを終えるまで、スマホをそっと預ける。",
+    key: "TodoLock",
     glyph: "✓",
     iconImage: "/TodoLock.webp",
     appStore:
@@ -36,9 +35,7 @@ const products: Product[] = [
   },
   {
     num: "03",
-    name: "SleepLock",
-    category: "SLEEP",
-    description: "夜に画面を閉じ、朝にやさしく解いてくれる眠りの伴走者。",
+    key: "SleepLock",
     glyph: "月",
     iconImage: "/SleepLock.webp",
     appStore:
@@ -51,17 +48,16 @@ const products: Product[] = [
   <div class="container-page">
     <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div>
-        <span class="meta-label">( PRODUCTS / 03 )</span>
+        <span class="meta-label">{dict.meta}</span>
         <h2
           class="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-ink-900 md:text-6xl"
         >
-          あなたに合う、<br />
-          距離を。
+          {dict.heading1}<br />
+          {dict.heading2}
         </h2>
       </div>
-      <p class="max-w-sm text-sm leading-loose text-ink-700">
-        猫・タスク・睡眠。<br />
-        場面ごとに「距離」を変える、3つの小さな道具。
+      <p class="max-w-sm whitespace-pre-line text-sm leading-loose text-ink-700">
+        {dict.lead}
       </p>
     </div>
 
@@ -69,85 +65,88 @@ const products: Product[] = [
       class="mt-16 grid gap-px overflow-hidden border border-ink-900 bg-ink-900 md:grid-cols-3"
     >
       {
-        products.map((p) => (
-          <article class="relative flex flex-col bg-white p-8 md:p-10">
-            <div class="flex items-start justify-between">
-              <span class="meta-label">{p.category}</span>
-              <span class="text-[11px] font-medium tracking-widest2 text-ink-500">
-                {p.num}
-              </span>
-            </div>
+        products.map((p) => {
+          const meta = dict.items[p.key];
+          return (
+            <article class="relative flex flex-col bg-white p-8 md:p-10">
+              <div class="flex items-start justify-between">
+                <span class="meta-label">{meta.category}</span>
+                <span class="text-[11px] font-medium tracking-widest2 text-ink-500">
+                  {p.num}
+                </span>
+              </div>
 
-            <div class="mt-12 flex h-32 items-center justify-center">
-              {p.iconImage ? (
-                <img
-                  src={p.iconImage}
-                  alt={`${p.name} icon`}
-                  class="h-24 w-24 rounded-[22%]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <div class="flex h-24 w-24 items-center justify-center rounded-full border border-ink-900 text-3xl font-bold text-ink-900">
-                  {p.glyph}
-                </div>
-              )}
-            </div>
-
-            <div class="mt-12">
-              <h3 class="text-2xl font-bold tracking-tight text-ink-900 md:text-3xl">
-                {p.name}
-              </h3>
-              <p class="mt-3 text-sm leading-loose text-ink-700">
-                {p.description}
-              </p>
-            </div>
-
-            <div class="mt-10 divide-y divide-ink-900/10 border-t border-ink-900/10">
-              {[
-                { name: "App Store", href: p.appStore },
-                { name: "Google Play", href: p.googlePlay },
-              ]
-                .filter((store) => store.href !== undefined)
-                .map((store) =>
-                store.href ? (
-                  <a
-                    href={store.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group flex items-center justify-between py-3 transition hover:text-ink-900"
-                  >
-                    <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-700">
-                      {store.name}
-                    </span>
-                    <span
-                      class="text-ink-900 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      aria-hidden="true"
-                    >
-                      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none">
-                        <path
-                          d="M7 17L17 7M17 7H8M17 7v9"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="square"
-                        />
-                      </svg>
-                    </span>
-                  </a>
+              <div class="mt-12 flex h-32 items-center justify-center">
+                {p.iconImage ? (
+                  <img
+                    src={p.iconImage}
+                    alt={`${p.key} icon`}
+                    class="h-24 w-24 rounded-[22%]"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 ) : (
-                  <div class="flex items-center justify-between py-3">
-                    <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-500">
-                      {store.name}
-                    </span>
-                    <span class="text-[10px] font-medium tracking-widest2 uppercase text-ink-300">
-                      準備中
-                    </span>
+                  <div class="flex h-24 w-24 items-center justify-center rounded-full border border-ink-900 text-3xl font-bold text-ink-900">
+                    {p.glyph}
                   </div>
-                )
-              )}
-            </div>
-          </article>
-        ))
+                )}
+              </div>
+
+              <div class="mt-12">
+                <h3 class="text-2xl font-bold tracking-tight text-ink-900 md:text-3xl">
+                  {p.key}
+                </h3>
+                <p class="mt-3 text-sm leading-loose text-ink-700">
+                  {meta.description}
+                </p>
+              </div>
+
+              <div class="mt-10 divide-y divide-ink-900/10 border-t border-ink-900/10">
+                {[
+                  { name: "App Store", href: p.appStore },
+                  { name: "Google Play", href: p.googlePlay },
+                ]
+                  .filter((store) => store.href !== undefined)
+                  .map((store) =>
+                    store.href ? (
+                      <a
+                        href={store.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center justify-between py-3 transition hover:text-ink-900"
+                      >
+                        <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-700">
+                          {store.name}
+                        </span>
+                        <span
+                          class="text-ink-900 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          aria-hidden="true"
+                        >
+                          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none">
+                            <path
+                              d="M7 17L17 7M17 7H8M17 7v9"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="square"
+                            />
+                          </svg>
+                        </span>
+                      </a>
+                    ) : (
+                      <div class="flex items-center justify-between py-3">
+                        <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-500">
+                          {store.name}
+                        </span>
+                        <span class="text-[10px] font-medium tracking-widest2 uppercase text-ink-300">
+                          {dict.preparing}
+                        </span>
+                      </div>
+                    )
+                  )}
+              </div>
+            </article>
+          );
+        })
       }
     </div>
   </div>

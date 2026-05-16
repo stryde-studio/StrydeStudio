@@ -1,31 +1,25 @@
 ---
-const rows = [
-  { label: "屋号", value: "Stryde Studio" },
-  { label: "事業内容", value: "モバイルアプリケーションの企画・開発・運営" },
-  {
-    label: "所在地",
-    value: "東京都渋谷区神宮前5丁目51番8号 ラ・ポルト青山 2F-7",
-  },
-  { label: "開業", value: "2026年" },
-  { label: "お問い合わせ", value: "contact@stryde.studio" },
-];
+import { resolveLocale, t, type Locale } from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang].studio;
 ---
 
 <section id="studio" class="border-t border-ink-900 bg-white py-20 md:py-28">
   <div class="container-page grid gap-12 md:grid-cols-[1fr_2fr]">
     <div>
-      <span class="meta-label">( STUDIO )</span>
+      <span class="meta-label">{dict.meta}</span>
       <h2
         class="mt-6 text-4xl font-bold tracking-tight text-ink-900 md:text-6xl"
       >
-        STUDIO
+        {dict.heading}
       </h2>
     </div>
 
     <div>
       <dl class="divide-y divide-ink-900 border-y border-ink-900">
         {
-          rows.map((row) => (
+          dict.rows.map((row) => (
             <div class="grid grid-cols-[110px_1fr] gap-6 py-5 md:grid-cols-[160px_1fr] md:py-6">
               <dt class="meta-label pt-1">{row.label}</dt>
               <dd class="text-sm text-ink-900 md:text-base">{row.value}</dd>

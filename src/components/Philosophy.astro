@@ -1,38 +1,30 @@
 ---
+import { resolveLocale, t, type Locale } from "../i18n/locales";
+
+const lang: Locale = resolveLocale(Astro.currentLocale);
+const dict = t[lang].philosophy;
 ---
 
 <section id="philosophy" class="bg-white py-24 md:py-32">
   <div class="container-page grid gap-12 md:grid-cols-[1fr_2fr]">
     <div>
-      <span class="meta-label">( PHILOSOPHY )</span>
+      <span class="meta-label">{dict.meta}</span>
     </div>
 
     <div>
       <h2
         class="text-3xl font-bold leading-[1.4] tracking-tight text-ink-900 sm:text-4xl md:text-5xl"
       >
-        スマホとの心地よい距離を、<br />
-        デザインする
+        {dict.heading1}<br />
+        {dict.heading2}
       </h2>
 
       <div class="mt-10 space-y-6 text-sm leading-loose text-ink-700">
-        <p>
-          わたしたちの毎日は、スマートフォンの中に閉じ込められがちです。<br />
-          集中したいとき、眠りたいとき、誰かと向き合いたいとき。
-        </p>
-        <p>
-          Stryde Studioは、テクノロジーをやさしく制御することで、<br />
-          人と画面のあいだに「ちょうどよい余白」をつくります。
-        </p>
-        <p>
-          ロックする、見守る、整える。<br />
-          小さな仕組みが、毎日の体験を少しずつ豊かにしていく。<br />
-          わたしたちは、そんなプロダクトをつくり続けます。
-        </p>
+        {dict.body.map((p) => <p>{p}</p>)}
       </div>
 
       <a href="#" class="view-more mt-12">
-        <span>VIEW MORE</span>
+        <span>{dict.cta}</span>
         <span class="view-more__arrow" aria-hidden="true">
           <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
             <path
