@@ -1,0 +1,80 @@
+---
+const year = new Date().getFullYear();
+
+const nav = [
+  { label: "PRODUCTS", href: "/#products" },
+  { label: "PHILOSOPHY", href: "/#philosophy" },
+  { label: "STUDIO", href: "/#studio" },
+];
+
+const legalNav = [
+  { label: "プライバシーポリシー", href: "/privacy" },
+  { label: "利用規約", href: "/terms" },
+  { label: "特定商取引法に基づく表記", href: "/legal/tokushou" },
+];
+---
+
+<footer id="contact" class="bg-ink-900 text-white">
+  <div class="container-page py-20 md:py-28">
+    <div class="grid gap-12 md:grid-cols-2">
+      <div>
+        <p class="text-[11px] font-medium tracking-widest2 uppercase text-white/60">
+          ( CONTACT )
+        </p>
+        <h2 class="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
+          Let&rsquo;s get<br />in touch.
+        </h2>
+        <p class="mt-6 text-sm leading-loose text-white/70">
+          ご依頼・取材・その他のお問い合わせは<br />
+          以下よりお気軽にご連絡ください。
+        </p>
+        <a
+          href="mailto:contact@stryde.studio"
+          class="mt-10 inline-flex items-center gap-4 border-b border-white pb-2 text-sm font-medium tracking-widest2 uppercase text-white"
+        >
+          contact@stryde.studio
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" aria-hidden="true">
+            <path
+              d="M7 17L17 7M17 7H8M17 7v9"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+            ></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex flex-col items-start gap-8 md:items-end">
+        <nav class="flex flex-wrap gap-6 md:justify-end">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                class="text-xs font-medium tracking-widest2 uppercase text-white/80 transition hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+        <nav class="flex flex-wrap gap-x-6 gap-y-3 md:justify-end">
+          {
+            legalNav.map((item) => (
+              <a
+                href={item.href}
+                class="text-xs text-white/60 transition hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+
+    <div class="mt-20 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-8 text-[11px] tracking-widest2 uppercase text-white/50 md:flex-row md:items-center">
+      <span>Stryde Studio</span>
+      <span>© {year} Stryde Studio. All rights reserved.</span>
+    </div>
+  </div>
+</footer>

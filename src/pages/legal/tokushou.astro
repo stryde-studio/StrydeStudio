@@ -1,0 +1,102 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const rows = [
+  { label: "販売事業者", value: "Stryde Studio" },
+  { label: "運営統括責任者", value: "梶原 大輔" },
+  {
+    label: "所在地",
+    value: "東京都渋谷区神宮前5丁目51番8号 ラ・ポルト青山 2F-7",
+  },
+  { label: "電話番号", value: "090-9779-2311" },
+  { label: "メールアドレス", value: "contact@stryde.studio" },
+  {
+    label: "販売価格",
+    value:
+      "各アプリの販売価格は App Store / Google Play の商品ページに表示されます。",
+  },
+  {
+    label: "商品代金以外の必要料金",
+    value: "本サービスのご利用にあたり発生する通信費はお客様のご負担となります。",
+  },
+  {
+    label: "お支払い方法",
+    value:
+      "Apple ID / Google アカウントに登録された決済方法によりお支払いいただきます。",
+  },
+  {
+    label: "お支払い時期",
+    value: "各プラットフォームの定めに従います。",
+  },
+  {
+    label: "商品の引渡時期",
+    value: "決済完了後、ダウンロードが可能になります。",
+  },
+  {
+    label: "返品・キャンセル",
+    value:
+      "デジタル商品の性質上、原則として返品はお受けできません。返金については Apple / Google それぞれの返金ポリシーに従ってお手続きください。",
+  },
+  {
+    label: "動作環境",
+    value:
+      "各アプリの動作環境は App Store / Google Play の商品ページに記載しています。",
+  },
+];
+---
+
+<Layout
+  title="特定商取引法に基づく表記 — Stryde Studio"
+  description="Stryde Studio の特定商取引法に基づく表記です。"
+>
+  <Header />
+  <main class="pt-32 md:pt-40">
+    <section class="bg-white pb-24 md:pb-32">
+      <div class="container-page">
+        <span class="meta-label">( LEGAL )</span>
+        <h1
+          class="mt-6 text-3xl font-bold leading-[1.2] tracking-tight text-ink-900 sm:text-4xl md:text-5xl"
+        >
+          特定商取引法に<br />基づく表記
+        </h1>
+
+        <div class="mt-16 md:mt-20">
+          <dl class="divide-y divide-ink-900 border-y border-ink-900">
+            {
+              rows.map((row) => (
+                <div class="grid grid-cols-1 gap-2 py-5 md:grid-cols-[200px_1fr] md:gap-8 md:py-6">
+                  <dt class="meta-label pt-1">{row.label}</dt>
+                  <dd class="text-sm leading-loose text-ink-900 md:text-base">
+                    {row.value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <p class="mt-12 text-xs leading-loose text-ink-500">
+          最終更新日: 2026年5月16日
+        </p>
+
+        <a
+          href="/"
+          class="mt-16 inline-flex items-center gap-3 text-xs font-medium tracking-widest2 uppercase text-ink-900"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+            <path
+              d="M14 6L8 12L14 18"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+            ></path>
+          </svg>
+          BACK TO HOME
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,34 @@
+---
+const nav = [
+  { label: "PRODUCTS", href: "#products" },
+  { label: "PHILOSOPHY", href: "#philosophy" },
+  { label: "STUDIO", href: "#studio" },
+];
+---
+
+<header class="absolute inset-x-0 top-0 z-30">
+  <div class="container-page flex items-center justify-between py-6">
+    <a
+      href="/"
+      class="flex flex-col gap-0.5 text-base font-semibold uppercase leading-none text-ink-900"
+      aria-label="Stryde Studio"
+    >
+      <span class="grid w-[6.5rem] grid-cols-6 text-center">
+        <span>S</span><span>T</span><span>R</span><span>Y</span><span>D</span><span
+          >E</span
+        >
+      </span>
+      <span class="grid w-[6.5rem] grid-cols-6 text-center">
+        <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span
+          >O</span
+        >
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-10 md:flex">
+      {nav.map((item) => <a href={item.href} class="nav-link">{item.label}</a>)}
+    </nav>
+
+    <a href="#contact" class="btn-contact">CONTACT</a>
+  </div>
+</header>

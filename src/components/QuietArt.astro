@@ -1,0 +1,134 @@
+---
+interface Props {
+  variant?: "distance" | "orbit" | "wave";
+  class?: string;
+}
+const { variant = "distance", class: className = "" } = Astro.props;
+
+const waves = Array.from({ length: 9 }).map((_, i) => {
+  const y = 60 + i * 36;
+  const amplitude = 8 + i * 2;
+  const points: string[] = [];
+  for (let x = 0; x <= 1600; x += 40) {
+    const dy = Math.sin((x / 1600) * Math.PI * 4 + i * 0.4) * amplitude;
+    points.push(`${x === 0 ? "M" : "L"} ${x} ${(y + dy).toFixed(2)}`);
+  }
+  return { d: points.join(" "), opacity: 1 - i * 0.08 };
+});
+---
+
+{
+  variant === "distance" && (
+    <svg
+      viewBox="0 0 400 400"
+      class={className}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* concentric rings — represents "distance" / breathing space */}
+      <g fill="none" stroke="#0a0a0a" stroke-width="0.8">
+        <circle cx="200" cy="200" r="40" />
+        <circle cx="200" cy="200" r="80" opacity="0.7" />
+        <circle cx="200" cy="200" r="120" opacity="0.45" />
+        <circle cx="200" cy="200" r="160" opacity="0.25" />
+        <circle cx="200" cy="200" r="200" opacity="0.12" />
+      </g>
+      {/* center dot — the phone */}
+      <circle cx="200" cy="200" r="6" fill="#0a0a0a" />
+      {/* mint accent dot — at "comfortable distance" */}
+      <circle cx="320" cy="200" r="5" fill="#9ec1a7" />
+      {/* connection line */}
+      <line
+        x1="206"
+        y1="200"
+        x2="314"
+        y2="200"
+        stroke="#0a0a0a"
+        stroke-width="0.5"
+        stroke-dasharray="2 4"
+      />
+      {/* measurement ticks */}
+      <g stroke="#0a0a0a" stroke-width="0.5">
+        <line x1="200" y1="195" x2="200" y2="205" />
+        <line x1="320" y1="195" x2="320" y2="205" />
+      </g>
+      {/* labels */}
+      <g
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="9"
+        fill="#666666"
+        letter-spacing="2"
+      >
+        <text x="200" y="225" text-anchor="middle">YOU</text>
+        <text x="320" y="225" text-anchor="middle">PHONE</text>
+      </g>
+    </svg>
+  )
+}
+
+{
+  variant === "orbit" && (
+    <svg
+      viewBox="0 0 600 200"
+      class={className}
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+    >
+      {/* horizontal scale / distance */}
+      <line
+        x1="0"
+        y1="100"
+        x2="600"
+        y2="100"
+        stroke="#0a0a0a"
+        stroke-width="0.6"
+      />
+      {Array.from({ length: 31 }).map((_, i) => {
+        const x = i * 20;
+        const major = i % 5 === 0;
+        return (
+          <line
+            x1={x}
+            y1="100"
+            x2={x}
+            y2={major ? 88 : 94}
+            stroke="#0a0a0a"
+            stroke-width="0.6"
+          />
+        );
+      })}
+      <circle cx="120" cy="100" r="6" fill="#0a0a0a" />
+      <circle cx="480" cy="100" r="6" fill="#9ec1a7" />
+      <g
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="10"
+        letter-spacing="2"
+        fill="#666666"
+      >
+        <text x="120" y="125" text-anchor="middle">YOU</text>
+        <text x="480" y="125" text-anchor="middle">PHONE</text>
+        <text x="300" y="80" text-anchor="middle" fill="#0a0a0a" font-weight="600">
+          COMFORTABLE DISTANCE
+        </text>
+      </g>
+    </svg>
+  )
+}
+
+{
+  variant === "wave" && (
+    <svg
+      viewBox="0 0 1600 400"
+      class={className}
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      {/* sleep / breath waves */}
+      <g fill="none" stroke="#ffffff" stroke-width="1">
+        {waves.map((w) => <path d={w.d} opacity={w.opacity} />)}
+      </g>
+    </svg>
+  )
+}

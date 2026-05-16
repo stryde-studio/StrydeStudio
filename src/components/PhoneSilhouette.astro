@@ -1,0 +1,102 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`phone-3d ${className}`}>
+  <div class="phone-3d__stage">
+    <div class="phone-3d__body">
+      <div class="phone-3d__face">
+        <span class="phone-3d__island"></span>
+        <span class="phone-3d__home"></span>
+      </div>
+      <div class="phone-3d__side">
+        <span class="phone-3d__power"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phone-3d {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .phone-3d__stage {
+    position: relative;
+    width: 100%;
+    padding-block: 8px;
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+  }
+
+  .phone-3d__body {
+    position: relative;
+    width: 62%;
+    margin-inline: auto;
+    aspect-ratio: 9 / 19;
+    transform-style: preserve-3d;
+    transform: rotateY(-26deg) rotateX(3deg);
+  }
+
+  .phone-3d__face {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #0a0a0a;
+    border-radius: 28px;
+    background: #ffffff;
+    backface-visibility: hidden;
+  }
+
+  .phone-3d__island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34%;
+    height: 18px;
+    border: 1.5px solid #0a0a0a;
+    border-radius: 999px;
+  }
+
+  .phone-3d__home {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28%;
+    height: 3px;
+    background: #0a0a0a;
+    border-radius: 999px;
+  }
+
+  .phone-3d__side {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 18px;
+    height: 100%;
+    border: 2px solid #0a0a0a;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    background: #ffffff;
+    transform-origin: 0% 50%;
+    transform: rotateY(90deg);
+    backface-visibility: hidden;
+  }
+
+  .phone-3d__power {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50px;
+    border-top: 1.5px solid #0a0a0a;
+    border-bottom: 1.5px solid #0a0a0a;
+  }
+</style>

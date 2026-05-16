@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const sections = [
+  {
+    heading: "1. はじめに",
+    body: [
+      "Stryde Studio（以下「当スタジオ」といいます）は、当スタジオが提供するアプリケーション及びウェブサイト（以下総称して「本サービス」といいます）における利用者（以下「ユーザー」といいます）の個人情報の取扱いについて、本プライバシーポリシー（以下「本ポリシー」といいます）を定めます。",
+    ],
+  },
+  {
+    heading: "2. 取得する情報",
+    body: [
+      "当スタジオは、本サービスの提供にあたり、必要最小限の範囲で以下の情報を取得することがあります。",
+      "・端末情報（OSバージョン、機種名、言語設定など）",
+      "・本サービスの利用状況に関する情報（操作ログ、クラッシュレポート等）",
+      "・お問い合わせ時にユーザーが任意で提供する情報（氏名、メールアドレス、お問い合わせ内容等）",
+      "各アプリごとの具体的な取得項目は、App Store / Google Play のプライバシーラベルに記載のとおりです。",
+    ],
+  },
+  {
+    heading: "3. 利用目的",
+    body: [
+      "取得した情報は、以下の目的のために利用します。",
+      "・本サービスの提供、維持、改善のため",
+      "・不具合の調査・対応、品質改善のため",
+      "・お問い合わせへの対応のため",
+      "・法令または利用規約に違反する行為への対応のため",
+    ],
+  },
+  {
+    heading: "4. 第三者への提供",
+    body: [
+      "当スタジオは、法令に定める場合を除き、ユーザー本人の同意なく取得した個人情報を第三者に提供しません。",
+    ],
+  },
+  {
+    heading: "5. 解析ツール・Cookieについて",
+    body: [
+      "本サービスでは、品質向上のためにクラッシュ解析や利用統計を行うことがあります。これらは個人を特定する目的では使用しません。本ウェブサイトでは、必要な範囲で Cookie 等の類似技術を使用する場合があります。",
+    ],
+  },
+  {
+    heading: "6. 情報の安全管理",
+    body: [
+      "当スタジオは、取得した個人情報の漏えい、滅失または毀損の防止その他の安全管理のために必要かつ適切な措置を講じます。",
+    ],
+  },
+  {
+    heading: "7. 開示・訂正・削除等の請求",
+    body: [
+      "ユーザーは、当スタジオに対して自己の個人情報の開示、訂正、利用停止、削除を請求することができます。請求は下記のお問い合わせ窓口までご連絡ください。",
+    ],
+  },
+  {
+    heading: "8. 本ポリシーの変更",
+    body: [
+      "当スタジオは、必要に応じて本ポリシーを変更することがあります。重要な変更を行う場合は、本サービスまたはウェブサイト上で告知します。",
+    ],
+  },
+  {
+    heading: "9. お問い合わせ窓口",
+    body: [
+      "本ポリシーまたは個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。",
+      "Stryde Studio",
+      "メール: contact@stryde.studio",
+    ],
+  },
+];
+---
+
+<Layout
+  title="プライバシーポリシー — Stryde Studio"
+  description="Stryde Studio のプライバシーポリシーです。"
+>
+  <Header />
+  <main class="pt-32 md:pt-40">
+    <section class="bg-white pb-24 md:pb-32">
+      <div class="container-page max-w-3xl">
+        <span class="meta-label">( LEGAL )</span>
+        <h1
+          class="mt-6 text-3xl font-bold leading-[1.2] tracking-tight text-ink-900 sm:text-4xl md:text-5xl"
+        >
+          プライバシー<br />ポリシー
+        </h1>
+
+        <div class="mt-16 space-y-12 md:mt-20">
+          {
+            sections.map((s) => (
+              <section>
+                <h2 class="text-lg font-bold tracking-tight text-ink-900 md:text-xl">
+                  {s.heading}
+                </h2>
+                <div class="mt-4 space-y-3 text-sm leading-loose text-ink-700 md:text-base">
+                  {s.body.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <p class="mt-16 text-xs leading-loose text-ink-500">
+          制定日: 2026年5月16日
+        </p>
+
+        <a
+          href="/"
+          class="mt-12 inline-flex items-center gap-3 text-xs font-medium tracking-widest2 uppercase text-ink-900"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
+            <path
+              d="M14 6L8 12L14 18"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="square"
+            ></path>
+          </svg>
+          BACK TO HOME
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
