@@ -1,0 +1,308 @@
+---
+import "../styles/global.css";
+
+type StoreLink = string | null; // string = URL, null = preparing, undefined = hide
+
+interface AppEntry {
+  num: string;
+  name: string;
+  category: { ja: string; en: string };
+  description: { ja: string; en: string };
+  iconImage: string;
+  appStore?: StoreLink;
+  googlePlay?: StoreLink;
+}
+
+const apps: AppEntry[] = [
+  {
+    num: "01",
+    name: "NekoLock",
+    category: { ja: "CATS", en: "CATS" },
+    description: {
+      ja: "かわいい猫がじゃまをする、スマホ依存対策アプリ。",
+      en: "An anti-phone-addiction app — with a cute cat that keeps getting in your way.",
+    },
+    iconImage: "/NekoLock.webp",
+    appStore:
+      "https://apps.apple.com/jp/app/nekolock-%E3%81%AD%E3%81%93%E3%81%A8%E3%82%B9%E3%83%9E%E3%83%9B%E4%BE%9D%E5%AD%98%E5%AF%BE%E7%AD%96/id6758571756",
+    googlePlay: null,
+  },
+  {
+    num: "02",
+    name: "TodoLock",
+    category: { ja: "TASKS", en: "TASKS" },
+    description: {
+      ja: "やるべきことを終えるまで、スマホをそっと預ける。",
+      en: "Tuck your phone away until your tasks are done — then it returns.",
+    },
+    iconImage: "/TodoLock.webp",
+    appStore:
+      "https://apps.apple.com/jp/app/todolock-%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86-%E3%82%A2%E3%83%97%E3%83%AA%E3%83%AD%E3%83%83%E3%82%AF/id6760632571",
+  },
+  {
+    num: "03",
+    name: "SleepLock",
+    category: { ja: "SLEEP", en: "SLEEP" },
+    description: {
+      ja: "夜に画面を閉じ、朝にやさしく解いてくれる眠りの伴走者。",
+      en: "Close the screen at night, and let the morning gently open it.",
+    },
+    iconImage: "/SleepLock.webp",
+    appStore:
+      "https://apps.apple.com/jp/app/sleeplock-%E5%AF%9D%E3%82%8B%E5%89%8D%E3%81%AE%E3%82%B9%E3%83%9E%E3%83%9B%E4%BE%9D%E5%AD%98%E5%AF%BE%E7%AD%96/id6760681850",
+  },
+];
+
+const labels = {
+  ja: {
+    meta: "( PRODUCTS / 03 )",
+    heading1: "あなたに合う、",
+    heading2: "距離を。",
+    lead: "猫・タスク・睡眠。\nあなたに合わせた、3つの小さな道具。",
+    preparing: "準備中",
+    backLink: "Stryde Studio へ",
+    siteHref: "/",
+  },
+  en: {
+    meta: "( PRODUCTS / 03 )",
+    heading1: "A distance",
+    heading2: "that fits you.",
+    lead: "Cats. Tasks. Sleep.\nThree small tools, made for you.",
+    preparing: "Coming soon",
+    backLink: "Visit Stryde Studio",
+    siteHref: "/en/",
+  },
+};
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stryde Studio apps — NekoLock, TodoLock, SleepLock."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Stryde Studio — Apps</title>
+    <script is:inline>
+      // Detect browser/OS language as early as possible to avoid FOUC
+      (function () {
+        var lang =
+          (navigator.language || navigator.userLanguage || "en")
+            .toLowerCase()
+            .indexOf("ja") === 0
+            ? "ja"
+            : "en";
+        document.documentElement.setAttribute("lang", lang);
+      })();
+    </script>
+    <style is:global>
+      html[lang="ja"] [data-lang="en"],
+      html[lang="en"] [data-lang="ja"] {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-white text-ink-900">
+    {/* Header */}
+    <header class="container-page pb-12 pt-12 md:pb-20 md:pt-16">
+      <a
+        href="/"
+        class="inline-flex flex-col text-base font-semibold uppercase leading-none text-ink-900"
+        aria-label="Stryde Studio"
+      >
+        <span class="grid w-[6.5rem] grid-cols-6 text-center">
+          <span>S</span><span>T</span><span>R</span><span>Y</span><span>D</span><span
+            >E</span
+          >
+        </span>
+        <span class="mt-0.5 grid w-[6.5rem] grid-cols-6 text-center">
+          <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span
+            >O</span
+          >
+        </span>
+      </a>
+    </header>
+
+    {/* Products section (same design as homepage) */}
+    <section class="bg-white py-12 md:py-16">
+      <div class="container-page">
+        <div
+          class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        >
+          <div>
+            <h1
+              class="text-4xl font-bold leading-[1.1] tracking-tight text-ink-900 md:text-6xl"
+              data-lang="ja"
+            >
+              {labels.ja.heading1}<br />
+              {labels.ja.heading2}
+            </h1>
+            <h1
+              class="text-4xl font-bold leading-[1.1] tracking-tight text-ink-900 md:text-6xl"
+              data-lang="en"
+            >
+              {labels.en.heading1}<br />
+              {labels.en.heading2}
+            </h1>
+          </div>
+          <p
+            class="max-w-sm whitespace-pre-line text-sm leading-loose text-ink-700"
+            data-lang="ja"
+          >
+            {labels.ja.lead}
+          </p>
+          <p
+            class="max-w-sm whitespace-pre-line text-sm leading-loose text-ink-700"
+            data-lang="en"
+          >
+            {labels.en.lead}
+          </p>
+        </div>
+
+        <div
+          class="mt-16 grid gap-px overflow-hidden border border-ink-900 bg-ink-900 md:grid-cols-3"
+        >
+          {
+            apps.map((app) => (
+              <article class="relative flex flex-col bg-white p-8 md:p-10">
+                <div class="flex items-start justify-between">
+                  <span class="meta-label" data-lang="ja">
+                    {app.category.ja}
+                  </span>
+                  <span class="meta-label" data-lang="en">
+                    {app.category.en}
+                  </span>
+                  <span class="text-[11px] font-medium tracking-widest2 text-ink-500">
+                    {app.num}
+                  </span>
+                </div>
+
+                <div class="mt-12 flex h-32 items-center justify-center">
+                  <img
+                    src={app.iconImage}
+                    alt={`${app.name} icon`}
+                    class="h-24 w-24 rounded-[22%]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <div class="mt-12">
+                  <h2 class="text-2xl font-bold tracking-tight text-ink-900 md:text-3xl">
+                    {app.name}
+                  </h2>
+                  <p
+                    class="mt-3 text-sm leading-loose text-ink-700"
+                    data-lang="ja"
+                  >
+                    {app.description.ja}
+                  </p>
+                  <p
+                    class="mt-3 text-sm leading-loose text-ink-700"
+                    data-lang="en"
+                  >
+                    {app.description.en}
+                  </p>
+                </div>
+
+                <div class="mt-10 divide-y divide-ink-900/10 border-t border-ink-900/10">
+                  {[
+                    { name: "App Store", href: app.appStore },
+                    { name: "Google Play", href: app.googlePlay },
+                  ]
+                    .filter((s) => s.href !== undefined)
+                    .map((store) =>
+                      store.href ? (
+                        <a
+                          href={store.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="group flex items-center justify-between py-3 transition hover:text-ink-900"
+                        >
+                          <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-700">
+                            {store.name}
+                          </span>
+                          <span
+                            class="text-ink-900 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            aria-hidden="true"
+                          >
+                            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none">
+                              <path
+                                d="M7 17L17 7M17 7H8M17 7v9"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="square"
+                              />
+                            </svg>
+                          </span>
+                        </a>
+                      ) : (
+                        <div class="flex items-center justify-between py-3">
+                          <span class="text-[11px] font-medium tracking-widest2 uppercase text-ink-500">
+                            {store.name}
+                          </span>
+                          <span
+                            class="text-[10px] font-medium tracking-widest2 uppercase text-ink-300"
+                            data-lang="ja"
+                          >
+                            {labels.ja.preparing}
+                          </span>
+                          <span
+                            class="text-[10px] font-medium tracking-widest2 uppercase text-ink-300"
+                            data-lang="en"
+                          >
+                            {labels.en.preparing}
+                          </span>
+                        </div>
+                      )
+                    )}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Footer */}
+    <footer class="container-page pb-12 pt-8 text-center md:pb-16">
+      <a
+        href={labels.ja.siteHref}
+        class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest2 text-ink-700 transition hover:text-ink-900"
+        data-lang="ja"
+      >
+        {labels.ja.backLink}
+        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none">
+          <path
+            d="M7 17L17 7M17 7H8M17 7v9"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="square"
+          ></path>
+        </svg>
+      </a>
+      <a
+        href={labels.en.siteHref}
+        class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest2 text-ink-700 transition hover:text-ink-900"
+        data-lang="en"
+      >
+        {labels.en.backLink}
+        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none">
+          <path
+            d="M7 17L17 7M17 7H8M17 7v9"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="square"
+          ></path>
+        </svg>
+      </a>
+      <p class="mt-8 text-[10px] uppercase tracking-widest2 text-ink-500">
+        © 2026 Stryde Studio
+      </p>
+    </footer>
+  </body>
+</html>

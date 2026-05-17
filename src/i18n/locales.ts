@@ -66,13 +66,13 @@ export const t = {
       meta: "( PRODUCTS / 03 )",
       heading1: "あなたに合う、",
       heading2: "距離を。",
-      lead: "猫・タスク・睡眠。\n場面ごとに「距離」を変える、3つの小さな道具。",
+      lead: "猫・タスク・睡眠。\nあなたに合わせた、3つの小さな道具。",
       cta: "VIEW MORE",
       preparing: "準備中",
       items: {
         NekoLock: {
-          category: "FOCUS",
-          description: "かわいい猫が見守ってくれる集中サポートアプリ。",
+          category: "CATS",
+          description: "かわいい猫がじゃまをする、スマホ依存対策アプリ。",
         },
         TodoLock: {
           category: "TASKS",
@@ -166,13 +166,14 @@ export const t = {
       meta: "( PRODUCTS / 03 )",
       heading1: "A distance",
       heading2: "that fits you.",
-      lead: "Cats. Tasks. Sleep.\nThree small tools that change the distance for each moment.",
+      lead: "Cats. Tasks. Sleep.\nThree small tools, made for you.",
       cta: "VIEW MORE",
       preparing: "Coming soon",
       items: {
         NekoLock: {
-          category: "FOCUS",
-          description: "A focus companion: a quiet cat watching over your time.",
+          category: "CATS",
+          description:
+            "An anti-phone-addiction app — with a cute cat that keeps getting in your way.",
         },
         TodoLock: {
           category: "TASKS",
