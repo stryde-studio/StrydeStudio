@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Haku サポート — Stryde Studio" description="Hakuのサポート情報です。">
+  <Header />
+  <main class="pt-32 md:pt-40">
+    <section class="bg-white pb-24 md:pb-32">
+      <div class="container-page max-w-3xl">
+        <span class="meta-label">( HAKU · SUPPORT )</span>
+        <h1 class="mt-6 text-3xl font-bold leading-[1.2] tracking-tight text-ink-900 sm:text-4xl md:text-5xl">
+          Haku<br />サポート
+        </h1>
+        <div class="mt-16 space-y-10 text-sm leading-loose text-ink-700 md:mt-20 md:text-base">
+          <p>アカウント、プロフィール、またはApple Walletパスに関するお問い合わせは、以下までご連絡ください。</p>
+          <p><a class="font-medium text-ink-900 underline underline-offset-4" href="mailto:contact@stryde.studio">contact@stryde.studio</a></p>
+          <p>アカウントと関連データは、アプリの「Account」画面から削除できます。</p>
+          <p><a class="font-medium text-ink-900 underline underline-offset-4" href="/haku/privacy">プライバシーポリシーを読む</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

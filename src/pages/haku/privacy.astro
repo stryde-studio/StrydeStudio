@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import LegalPage from "../../components/LegalPage.astro";
+
+const sections = [
+  {
+    heading: "1. 対象サービス",
+    body: [
+      "本プライバシーポリシーは、Stryde Studio（以下「当スタジオ」）が提供するHakuアプリケーションおよび関連するウェブサービス（以下「Haku」）に適用されます。",
+    ],
+  },
+  {
+    heading: "2. 取得・保存する情報",
+    body: [
+      "Hakuは、アカウント認証、プロフィールの保存、およびApple Walletパスの生成に必要な範囲で、以下の情報を取り扱います。",
+      "・Sign in with Appleで提供されるユーザー識別子、および初回認証時に提供される場合があるメールアドレス",
+      "・ユーザーが入力するプロフィール情報（名前、肩書き、自己紹介、リンク、QRコードの遷移先、選択したテンプレート）",
+      "・生成したApple Walletパスの記録",
+      "プロフィール画像およびロゴ画像は、このバージョンのHakuでは端末内にのみ保存され、当スタジオのサーバーへ送信しません。",
+    ],
+  },
+  {
+    heading: "3. 利用目的",
+    body: [
+      "取得した情報は、Hakuへのログイン、プロフィールの同期、Apple Walletパスの生成・提供、サポート対応、およびサービスの安全な運営のためにのみ使用します。",
+      "当スタジオは、Hakuで取り扱う個人情報を広告目的で利用または販売しません。",
+    ],
+  },
+  {
+    heading: "4. 保管と第三者提供",
+    body: [
+      "アカウント、プロフィール、および生成済みパスの記録は、Cloudflareのサービス上で保管します。法令上必要な場合を除き、ユーザーの同意なく個人情報を第三者へ提供しません。",
+    ],
+  },
+  {
+    heading: "5. 削除請求",
+    body: [
+      "アプリの「Account」画面から「Delete account and data」を選択すると、アカウント、プロフィール、セッション、および生成済みパスの記録を削除できます。",
+    ],
+  },
+  {
+    heading: "6. お問い合わせ",
+    body: [
+      "本ポリシーまたはHakuでの個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。",
+      "Stryde Studio",
+      "メール: contact@stryde.studio",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Haku プライバシーポリシー — Stryde Studio"
+  description="Hakuのプライバシーポリシーです。"
+>
+  <Header />
+  <LegalPage
+    metaLabel="( HAKU · LEGAL )"
+    title1="Haku"
+    title2="プライバシーポリシー"
+    sections={sections}
+    established="最終更新日: 2026年7月26日"
+    back="BACK TO HOME"
+  />
+  <Footer />
+</Layout>

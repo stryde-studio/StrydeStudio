@@ -1,0 +1,55 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import LegalPage from "../../../components/LegalPage.astro";
+
+const sections = [
+  {
+    heading: "1. Scope",
+    body: ["This Privacy Policy applies to the Haku application and related web services (collectively, “Haku”) provided by Stryde Studio (the Studio)."],
+  },
+  {
+    heading: "2. Information We Handle",
+    body: [
+      "Haku handles the following information only as needed to authenticate your account, save your profile, and create Apple Wallet passes:",
+      "• Your Sign in with Apple identifier and, where provided at first sign-in, your email address",
+      "• Profile information you submit, including your name, title, bio, links, QR destination, and selected template",
+      "• Records of Apple Wallet passes generated for your account",
+      "Profile and logo images remain on your device in this version of Haku and are not uploaded to the Studio's servers.",
+    ],
+  },
+  {
+    heading: "3. How We Use Information",
+    body: [
+      "We use this information only to authenticate you, sync your profile, generate and provide Apple Wallet passes, provide support, and operate Haku securely.",
+      "We do not sell personal information or use it for advertising.",
+    ],
+  },
+  {
+    heading: "4. Storage and Sharing",
+    body: ["Account, profile, and generated-pass records are stored using Cloudflare services. We do not share personal information with third parties without your consent, except where required by law."],
+  },
+  {
+    heading: "5. Deleting Your Data",
+    body: ["In the app, choose Account → Delete account and data to delete your account, profile, sessions, and generated-pass records."],
+  },
+  {
+    heading: "6. Contact",
+    body: ["For questions about this Policy or Haku's handling of personal information, contact:", "Stryde Studio", "Email: contact@stryde.studio"],
+  },
+];
+---
+
+<Layout title="Haku Privacy Policy — Stryde Studio" description="Privacy Policy for Haku.">
+  <Header />
+  <LegalPage
+    metaLabel="( HAKU · LEGAL )"
+    title1="Haku"
+    title2="Privacy Policy"
+    sections={sections}
+    established="Last updated: July 26, 2026"
+    back="BACK TO HOME"
+  />
+  <Footer />
+</Layout>
