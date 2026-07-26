@@ -63,10 +63,10 @@ export const t = {
       cta: "VIEW MORE",
     },
     products: {
-      meta: "( PRODUCTS / 03 )",
+      meta: "( PRODUCTS / 04 )",
       heading1: "あなたに合う、",
       heading2: "距離を。",
-      lead: "猫・タスク・睡眠。\nあなたに合わせた、3つの小さな道具。",
+      lead: "猫・タスク・睡眠・散歩。\nあなたに合わせた、小さな道具たち。",
       cta: "VIEW MORE",
       preparing: "準備中",
       items: {
@@ -82,6 +82,11 @@ export const t = {
           category: "SLEEP",
           description:
             "夜に画面を閉じ、朝にやさしく解いてくれる眠りの伴走者。",
+        },
+        Walkabout: {
+          category: "WALK",
+          description:
+            "歩いた歩数の分だけ、Apple Mapsの実写で世界の街を巡る散歩アプリ。",
         },
       },
     },
@@ -163,10 +168,10 @@ export const t = {
       cta: "VIEW MORE",
     },
     products: {
-      meta: "( PRODUCTS / 03 )",
+      meta: "( PRODUCTS / 04 )",
       heading1: "A distance",
       heading2: "that fits you.",
-      lead: "Cats. Tasks. Sleep.\nThree small tools, made for you.",
+      lead: "Cats. Tasks. Sleep. Walks.\nSmall tools, made for you.",
       cta: "VIEW MORE",
       preparing: "Coming soon",
       items: {
@@ -184,6 +189,11 @@ export const t = {
           category: "SLEEP",
           description:
             "Close the screen at night, and let the morning gently open it.",
+        },
+        Walkabout: {
+          category: "WALK",
+          description:
+            "Walk in real life, and real-world scenery from Apple Maps unfolds along your course.",
         },
       },
     },
