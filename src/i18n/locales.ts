@@ -63,10 +63,10 @@ export const t = {
       cta: "VIEW MORE",
     },
     products: {
-      meta: "( PRODUCTS / 04 )",
+      meta: "( PRODUCTS / 03 )",
       heading1: "あなたに合う、",
       heading2: "距離を。",
-      lead: "猫・タスク・睡眠・散歩。\nあなたに合わせた、小さな道具たち。",
+      lead: "猫・タスク・散歩。\nあなたに合わせた、小さな道具たち。",
       cta: "VIEW MORE",
       preparing: "準備中",
       items: {
@@ -77,11 +77,6 @@ export const t = {
         TodoLock: {
           category: "TASKS",
           description: "やるべきことを終えるまで、スマホをそっと預ける。",
-        },
-        SleepLock: {
-          category: "SLEEP",
-          description:
-            "夜に画面を閉じ、朝にやさしく解いてくれる眠りの伴走者。",
         },
         Walkabout: {
           category: "WALK",
@@ -168,10 +163,10 @@ export const t = {
       cta: "VIEW MORE",
     },
     products: {
-      meta: "( PRODUCTS / 04 )",
+      meta: "( PRODUCTS / 03 )",
       heading1: "A distance",
       heading2: "that fits you.",
-      lead: "Cats. Tasks. Sleep. Walks.\nSmall tools, made for you.",
+      lead: "Cats. Tasks. Walks.\nSmall tools, made for you.",
       cta: "VIEW MORE",
       preparing: "Coming soon",
       items: {
@@ -184,11 +179,6 @@ export const t = {
           category: "TASKS",
           description:
             "Tuck your phone away until your tasks are done — then it returns.",
-        },
-        SleepLock: {
-          category: "SLEEP",
-          description:
-            "Close the screen at night, and let the morning gently open it.",
         },
         Walkabout: {
           category: "WALK",
