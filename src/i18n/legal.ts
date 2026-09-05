@@ -29,6 +29,7 @@ export const privacyPage: Record<Locale, LegalPage> = {
           "・本サービスの利用状況に関する情報（操作ログ、クラッシュレポート等）",
           "・お問い合わせ時にユーザーが任意で提供する情報（氏名、メールアドレス、お問い合わせ内容等）",
           "・Walkaboutをご利用の場合：Apple ヘルスケア（HealthKit）経由で歩数データを取得します。取得した歩数データは、端末上でアプリ内のコース進行を計算する目的にのみ使用し、当スタジオのサーバーに送信・保存することはありません。第三者への提供や広告目的での利用も一切行いません。",
+          "・Walkaboutでは、Firebase Analyticsを通じて、アプリの操作に関する情報、端末・アプリの識別子、端末およびOSに関する情報、ならびにIPアドレスから導出されるおおよその地域情報を収集することがあります。歩数データはFirebase Analyticsに送信しません。",
           "各アプリごとの具体的な取得項目は、App Store / Google Play のプライバシーラベルに記載のとおりです。",
         ],
       },
@@ -46,12 +47,14 @@ export const privacyPage: Record<Locale, LegalPage> = {
         heading: "4. 第三者への提供",
         body: [
           "当スタジオは、法令に定める場合を除き、ユーザー本人の同意なく取得した個人情報を第三者に提供しません。",
+          "ただし、本サービスの提供、利用状況の分析および品質向上に必要な範囲で、Google LLCが提供するFirebase Analyticsその他の委託先サービスを利用することがあります。これらのサービス提供者による情報の取扱いは、各提供者のプライバシーポリシーおよび利用規約に従います。",
         ],
       },
       {
         heading: "5. 解析ツール・Cookieについて",
         body: [
-          "本サービスでは、品質向上のためにクラッシュ解析や利用統計を行うことがあります。これらは個人を特定する目的では使用しません。本ウェブサイトでは、必要な範囲で Cookie 等の類似技術を使用する場合があります。",
+          "Walkaboutでは、Google LLCが提供するFirebase Analyticsを、機能の利用状況の把握、既存機能の改善および新機能の検討のために使用します。Firebase Analyticsで収集した情報は、当スタジオによるターゲティング広告または第三者データとの照合には使用しません。",
+          "本サービスでは、品質向上のためにクラッシュ解析や利用統計を行うことがあります。本ウェブサイトでは、必要な範囲で Cookie 等の類似技術を使用する場合があります。",
         ],
       },
       {
@@ -81,7 +84,7 @@ export const privacyPage: Record<Locale, LegalPage> = {
         ],
       },
     ],
-    established: "制定日: 2026年5月16日",
+    established: "最終更新日: 2026年9月5日",
     back: "BACK TO HOME",
   },
   en: {
@@ -103,6 +106,7 @@ export const privacyPage: Record<Locale, LegalPage> = {
           "• Information about Service usage (operation logs, crash reports, etc.)",
           "• Information voluntarily provided by Users when making inquiries (name, email address, content of inquiry, etc.)",
           "• For Walkabout: step count data obtained via Apple Health (HealthKit). This data is used solely on-device to calculate in-app course progress, and is never transmitted to or stored on the Studio's servers, shared with third parties, or used for advertising purposes.",
+          "• For Walkabout: Firebase Analytics may collect app interaction data, device and app identifiers, device and operating-system information, and approximate location derived from IP addresses. Step count data is not sent to Firebase Analytics.",
           "Specific data collection for each app is detailed in the privacy labels on the App Store and Google Play.",
         ],
       },
@@ -120,12 +124,14 @@ export const privacyPage: Record<Locale, LegalPage> = {
         heading: "4. Provision to Third Parties",
         body: [
           "The Studio will not provide personal information to third parties without the User's consent, except as required by law.",
+          "However, the Studio may use service providers, including Firebase Analytics provided by Google LLC, to the extent necessary to provide the Services, analyze usage, and improve quality. Each provider handles information under its own privacy policy and terms of service.",
         ],
       },
       {
         heading: "5. Analytics and Cookies",
         body: [
-          "The Services may perform crash analytics and usage statistics for quality improvement. These are not used to identify individuals. This website may use Cookies and similar technologies as necessary.",
+          "Walkabout uses Firebase Analytics, provided by Google LLC, to understand feature usage, improve existing features, and plan new ones. The Studio does not use Firebase Analytics data for targeted advertising or to match it with third-party data.",
+          "The Services may perform crash analytics and usage statistics for quality improvement. This website may use Cookies and similar technologies as necessary.",
         ],
       },
       {
@@ -155,7 +161,7 @@ export const privacyPage: Record<Locale, LegalPage> = {
         ],
       },
     ],
-    established: "Effective: May 16, 2026",
+    established: "Last updated: September 5, 2026",
     back: "BACK TO HOME",
   },
 };
